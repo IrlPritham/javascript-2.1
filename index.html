@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Lab Exercises</title>
+    <style>
+        body {
+            background-color: #111111;
+            color: #eeeeee;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        section {
+            margin-bottom: 30px;
+        }
+        input, textarea, button {
+            background-color: #222222;
+            color: #eeeeee;
+            border: 1px solid #444444;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Lab Exercises</h1>
+
+    <section id="arrays-section">
+        <h2>Arrays and array functions</h2>
+
+        <h3>1. One-dimensional array new Array(5)</h3>
+        <div id="arr1"></div>
+
+        <h3>2. Array b = new Array(11,12,13,14,15)</h3>
+        <div id="arr2"></div>
+
+        <h3>3. Literal array c = [11,12,13,14,15]</h3>
+        <div id="arr3"></div>
+
+        <h3>4. 3×3 two-dimensional array</h3>
+        <div id="arr4"></div>
+
+        <h3>5. Function display(a) with indices 0 to 9</h3>
+        <div id="arr5"></div>
+
+        <h3>6. sort(a) and display(a)</h3>
+        <div id="arr6"></div>
+    </section>
+
+    <section id="math-number-date-section">
+        <h2>Math, Number, Boolean, Date, Document, Window</h2>
+
+        <h3>1. Math object methods (document.write)</h3>
+        <div id="math-output">
+            <script>
+                document.write("Math.abs(-5) = " + Math.abs(-5) + "<br>");
+                document.write("Math.ceil(4.2) = " + Math.ceil(4.2) + "<br>");
+                document.write("Math.floor(4.8) = " + Math.floor(4.8) + "<br>");
+                document.write("Math.round(4.5) = " + Math.round(4.5) + "<br>");
+                document.write("Math.max(3, 7, 2) = " + Math.max(3, 7, 2) + "<br>");
+                document.write("Math.min(3, 7, 2) = " + Math.min(3, 7, 2) + "<br>");
+                document.write("Math.sqrt(16) = " + Math.sqrt(16) + "<br>");
+                document.write("Math.pow(2, 3) = " + Math.pow(2, 3) + "<br>");
+            </script>
+        </div>
+
+        <h3>2. Number properties and document.lastModified</h3>
+        <div id="number-output">
+            <script>
+                document.write("Number.MAX_VALUE = " + Number.MAX_VALUE + "<br>");
+                document.write("Number.MIN_VALUE = " + Number.MIN_VALUE + "<br>");
+                document.write("Number.NEGATIVE_INFINITY = " + Number.NEGATIVE_INFINITY + "<br>");
+                document.write("Number.POSITIVE_INFINITY = " + Number.POSITIVE_INFINITY + "<br>");
+                document.write("document.lastModified = " + document.lastModified + "<br>");
+            </script>
+        </div>
+
+        <h3>3. Date object values</h3>
+        <div id="date-output"></div>
+
+        <h3>4. document.write() and writeln()</h3>
+        <div id="write-output">
+            <script>
+                document.write("First line using write()<br>");
+                document.writeln("Second line using writeln()<br>");
+            </script>
+        </div>
+
+        <h3>5. Prompt for name and greeting</h3>
+        <button onclick="askName()">Ask for name</button>
+        <p id="greeting"></p>
+    </section>
+
+    <section id="string-section">
+        <h2>String object and string methods</h2>
+
+        <h3>1. Character-processing string methods</h3>
+        <div id="string1"></div>
+
+        <h3>2. Split sentence and substring</h3>
+        <p>Enter a sentence:</p>
+        <input type="text" id="sentence">
+        <br>
+        <button onclick="splitSentence()">Split</button>
+        <p>Words (one per line):</p>
+        <textarea id="words"></textarea>
+        <p>First 10 characters:</p>
+        <p id="first10"></p>
+
+        <h3>3. String markup methods</h3>
+        <div id="markup-output">
+            <script>
+                var m1 = "Anchor text".anchor("top");
+                var m2 = "Blink text".blink();
+                var m3 = "Fixed text".fixed();
+                var m4 = "Strike text".strike();
+                var m5 = "Sub text".sub();
+                var m6 = "Sup text".sup();
+                var m7 = "Link text".link("https://example.com");
+                document.writeln(m1 + "<br>");
+                document.writeln(m2 + "<br>");
+                document.writeln(m3 + "<br>");
+                document.writeln(m4 + "<br>");
+                document.writeln(m5 + "<br>");
+                document.writeln(m6 + "<br>");
+                document.writeln(m7 + "<br>");
+            </script>
+        </div>
+    </section>
+
+    <section id="dom-section">
+        <h2>DOM, style, and events</h2>
+
+        <h3>1. Change paragraph text using button</h3>
+        <p id="txt">Welcome to this paragraph.</p>
+        <button onclick="changeParagraph()">Click to change text</button>
+
+        <h3>2. Change style of a paragraph</h3>
+        <p id="p2">This paragraph style will be changed using JavaScript.</p>
+
+        <h3>3. Inline onclick with this.innerHTML</h3>
+        <h1 onclick="this.innerHTML='Ooops!'">Click this heading</h1>
+
+        <h3>4. onclick with changeText(this)</h3>
+        <h1 onclick="changeText(this)">Click this heading too</h1>
+
+        <h3>5. Show current time</h3>
+        <button onclick="displayDate()">The time is?</button>
+        <p id="demo"></p>
+    </section>
+
+    <script>
+        var currentOutputId = "";
+
+        var a1 = new Array(5);
+        var i;
+        for (i = 0; i < 5; i++) {
+            a1[i] = i;
+        }
+        var arr1Text = "";
+        for (i = 0; i < a1.length; i++) {
+            arr1Text += "a1[" + i + "] = " + a1[i] + "<br>";
+        }
+        document.getElementById("arr1").innerHTML = arr1Text;
+
+        var b = new Array(11, 12, 13, 14, 15);
+        var arr2Text = "";
+        var j;
+        for (j = 0; j < b.length; j++) {
+            arr2Text += "b[" + j + "] = " + b[j] + "<br>";
+        }
+        document.getElementById("arr2").innerHTML = arr2Text;
+
+        var c = [11, 12, 13, 14, 15];
+        var arr3Text = "";
+        var k;
+        for (k = 0; k < c.length; k++) {
+            arr3Text += c[k] + "<br>";
+        }
+        document.getElementById("arr3").innerHTML = arr3Text;
+
+        var a2 = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+        var arr4Text = "";
+        var r;
+        var col;
+        for (r = 0; r < a2.length; r++) {
+            for (col = 0; col < a2[r].length; col++) {
+                arr4Text += a2[r][col] + " ";
+            }
+            arr4Text += "<br>";
+        }
+        document.getElementById("arr4").innerHTML = arr4Text;
+
+        function display(a) {
+            var text = "";
+            var index;
+            for (index in a) {
+                text += a[index] + " ";
+            }
+            document.getElementById(currentOutputId).innerHTML = text;
+        }
+
+        var arrQ5 = new Array(10);
+        var d;
+        for (d = 0; d < 10; d++) {
+            arrQ5[d] = d;
+        }
+        currentOutputId = "arr5";
+        display(arrQ5);
+
+        function sort(a) {
+            var x;
+            var y;
+            for (x = 0; x < a.length - 1; x++) {
+                for (y = x + 1; y < a.length; y++) {
+                    if (a[y] < a[x]) {
+                        var temp = a[x];
+                        a[x] = a[y];
+                        a[y] = temp;
+                    }
+                }
+            }
+        }
+
+        var aSort = new Array(10, 30, 20, 50, 40);
+        sort(aSort);
+        currentOutputId = "arr6";
+        display(aSort);
+
+        var now = new Date();
+        var dateInfo = "";
+        dateInfo += "Date: " + now.getDate() + "<br>";
+        dateInfo += "Day: " + now.getDay() + "<br>";
+        dateInfo += "Month: " + (now.getMonth() + 1) + "<br>";
+        dateInfo += "Year: " + now.getFullYear() + "<br>";
+        dateInfo += "Hours: " + now.getHours() + "<br>";
+        dateInfo += "Minutes: " + now.getMinutes() + "<br>";
+        dateInfo += "Seconds: " + now.getSeconds() + "<br>";
+        dateInfo += "Milliseconds: " + now.getMilliseconds() + "<br>";
+        dateInfo += "toString(): " + now.toString() + "<br>";
+        dateInfo += "valueOf(): " + now.valueOf() + "<br>";
+        dateInfo += "toLocaleString(): " + now.toLocaleString() + "<br>";
+        document.getElementById("date-output").innerHTML = dateInfo;
+
+        function askName() {
+            var name = prompt("Enter your name");
+            if (name) {
+                document.getElementById("greeting").innerHTML = "Hello " + name;
+            }
+        }
+
+        var s = "ZEBRA";
+        var s2 = "AbCdEfGAADD";
+        var stringText = "";
+        stringText += "charAt(0) of s: " + s.charAt(0) + "<br>";
+        stringText += "charCodeAt(0) of s: " + s.charCodeAt(0) + "<br>";
+        stringText += "String.fromCharCode(90): " + String.fromCharCode(90) + "<br>";
+        stringText += "s2 toLowerCase(): " + s2.toLowerCase() + "<br>";
+        stringText += "s2 toUpperCase(): " + s2.toUpperCase() + "<br>";
+        stringText += "indexOf('A') in s2: " + s2.indexOf("A") + "<br>";
+        stringText += "lastIndexOf('A') in s2: " + s2.lastIndexOf("A") + "<br>";
+        document.getElementById("string1").innerHTML = stringText;
+
+        function splitSentence() {
+            var sentence = document.getElementById("sentence").value;
+            var words = sentence.split(" ");
+            var text = "";
+            var n;
+            for (n = 0; n < words.length; n++) {
+                text += words[n] + "\n";
+            }
+            document.getElementById("words").value = text;
+            document.getElementById("first10").innerHTML = sentence.substring(0, 10);
+        }
+
+        function changeParagraph() {
+            var p = document.getElementById("txt");
+            alert(p.innerHTML);
+            p.innerHTML = "Thanks for coming!";
+        }
+
+        var p2 = document.getElementById("p2");
+        p2.style.color = "blue";
+        p2.style.fontFamily = "Arial";
+        p2.style.fontSize = "larger";
+
+        function changeText(id) {
+            id.innerHTML = "Ooops!";
+        }
+
+        function displayDate() {
+            document.getElementById("demo").innerHTML = new Date();
+        }
+    </script>
+</body>
+</html>
